@@ -1,0 +1,38 @@
+name: Deploy to oci-edge
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.OCI_EDGE_HOST }}
+          username: ${{ secrets.OCI_EDGE_USER }}
+          key: ${{ secrets.OCI_EDGE_SSH_KEY }}
+          script: |
+            DEPLOY_DIR="/var/www/chachahome-web"
+            REPO_URL="https://github.com/todaycha/chachahome-web.git"
+
+            if [ -d "$DEPLOY_DIR/.git" ]; then
+              cd "$DEPLOY_DIR"
+              git fetch origin main
+              git reset --hard origin/main
+            else
+              sudo mkdir -p "$DEPLOY_DIR"
+              sudo chown $USER:$USER "$DEPLOY_DIR"
+              git clone "$REPO_URL" "$DEPLOY_DIR"
+            fi
+
+            # Update nginx root symlink if needed
+            if [ ! -L /var/www/html ] || [ "$(readlink /var/www/html)" != "$DEPLOY_DIR" ]; then
+              sudo rm -rf /var/www/html
+              sudo ln -s "$DEPLOY_DIR" /var/www/html
+            fi

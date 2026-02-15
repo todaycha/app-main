@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaChahome - 스마트 홈을 더 스마트하게</title>
+  <meta name="description" content="ChaChahome은 IoT 기기를 통합 관리하고, 에너지를 절약하며, 집을 더 편리하게 만들어주는 스마트 홈 플랫폼입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo">
+        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+          <path d="M8 20V14L16 9L24 14V20L16 25L8 20Z" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M16 15V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="16" cy="13" r="2" fill="white"/>
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#6366F1"/>
+              <stop offset="1" stop-color="#8B5CF6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">ChaChahome</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features" class="nav-link">기능</a>
+        <a href="#stats" class="nav-link">성과</a>
+        <a href="#testimonials" class="nav-link">후기</a>
+      </div>
+      <div class="nav-actions">
+        <a href="/oauth2/sign_in" class="btn btn-primary btn-sm">로그인</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="badge">새로운 스마트 홈 경험</span>
+        <h1 class="hero-title">
+          스마트 홈을<br>
+          더 <span class="text-gradient">스마트</span>하게
+        </h1>
+        <p class="hero-desc">
+          ChaChahome은 모든 IoT 기기를 하나의 대시보드에서 통합 관리합니다.<br class="desktop-only">
+          에너지 절약부터 보안까지, 당신의 집을 더 편리하고 안전하게 만들어 드립니다.
+        </p>
+        <div class="hero-actions">
+          <a href="/oauth2/sign_in" class="btn btn-primary btn-lg">
+            무료로 시작하기
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#features" class="btn btn-outline btn-lg">기능 둘러보기</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">10,000+</span>
+            <span class="stat-label">연결된 기기</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">가동률</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">30%</span>
+            <span class="stat-label">에너지 절감</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg-glow"></div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">주요 기능</span>
+        <h2 class="section-title">당신의 집을 위한<br>모든 것이 여기에</h2>
+        <p class="section-desc">복잡한 스마트 홈 관리를 단순하고 직관적으로 만들어 드립니다.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #6366F1; --icon-bg: rgba(99,102,241,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+              <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">통합 대시보드</h3>
+          <p class="feature-desc">모든 IoT 기기의 상태를 한눈에 확인하고 제어하세요. 조명, 온도, 보안 카메라까지 하나의 화면에서 관리합니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #10B981; --icon-bg: rgba(16,185,129,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">에너지 최적화</h3>
+          <p class="feature-desc">AI 기반 에너지 분석으로 불필요한 소비를 자동으로 줄입니다. 평균 30%의 전기 요금 절감 효과를 경험하세요.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #F59E0B; --icon-bg: rgba(245,158,11,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">보안 모니터링</h3>
+          <p class="feature-desc">24시간 실시간 보안 모니터링과 이상 감지 알림. 외출 중에도 집 안팎의 상황을 실시간으로 확인할 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #EC4899; --icon-bg: rgba(236,72,153,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">스마트 자동화</h3>
+          <p class="feature-desc">시간, 날씨, 위치 기반 자동화 룰을 설정하세요. "퇴근하면 조명 켜기" 같은 시나리오를 간단히 만들 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #8B5CF6; --icon-bg: rgba(139,92,246,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M23 21V19C23 17.36 21.93 15.96 20.46 15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16.46 3.5C17.93 3.96 19 5.36 19 7C19 8.64 17.93 10.04 16.46 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">가족 공유</h3>
+          <p class="feature-desc">가족 구성원별로 권한을 설정하고 기기를 공유하세요. 아이들의 기기 사용 시간 관리도 간편하게 할 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #06B6D4; --icon-bg: rgba(6,182,212,0.1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">간편 설치</h3>
+          <p class="feature-desc">복잡한 설정 없이 기기를 추가하면 자동으로 인식합니다. 5분 안에 모든 기기를 연결하고 사용을 시작하세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stats-content">
+          <span class="badge">신뢰할 수 있는 플랫폼</span>
+          <h2 class="section-title">숫자로 보는<br>ChaChahome</h2>
+          <p class="section-desc">전 세계 사용자들이 ChaChahome으로 더 편리한 일상을 만들어가고 있습니다.</p>
+        </div>
+        <div class="stats-numbers">
+          <div class="stat-card">
+            <span class="stat-card-number">5,000+</span>
+            <span class="stat-card-label">활성 사용자</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-number">50+</span>
+            <span class="stat-card-label">호환 기기 브랜드</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-number">1M+</span>
+            <span class="stat-card-label">월간 자동화 실행</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card-number">4.8</span>
+            <span class="stat-card-label">사용자 만족도</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">고객 후기</span>
+        <h2 class="section-title">사용자들의 이야기</h2>
+        <p class="section-desc">ChaChahome을 사용하고 있는 분들의 실제 경험을 들어보세요.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+          </div>
+          <p class="testimonial-text">"여러 브랜드의 스마트 기기를 하나로 관리할 수 있어서 정말 편리합니다. 에너지 절감 효과도 눈에 띄게 체감됩니다."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">김</div>
+            <div>
+              <div class="testimonial-name">김민수</div>
+              <div class="testimonial-role">스마트 홈 얼리어답터</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+          </div>
+          <p class="testimonial-text">"보안 카메라와 도어락을 한 앱에서 관리하니 안심이 됩니다. 외출 중에도 실시간 알림을 받을 수 있어 마음이 놓여요."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">이</div>
+            <div>
+              <div class="testimonial-name">이지은</div>
+              <div class="testimonial-role">워킹맘</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0L10.2 5.3L16 6.1L11.8 10L12.9 16L8 13.1L3.1 16L4.2 10L0 6.1L5.8 5.3L8 0Z"/></svg>
+          </div>
+          <p class="testimonial-text">"자동화 기능이 정말 강력합니다. 퇴근 시간에 맞춰 에어컨이 켜지고, 잠들면 조명이 자동으로 꺼지니 삶의 질이 확 올랐어요."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">박</div>
+            <div>
+              <div class="testimonial-name">박준혁</div>
+              <div class="testimonial-role">IT 엔지니어</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2 class="cta-title">지금 무료로 시작하세요</h2>
+        <p class="cta-desc">복잡한 설정 없이, 5분 안에 스마트 홈을 시작할 수 있습니다.<br>신용카드 없이 무료로 체험해 보세요.</p>
+        <div class="cta-actions">
+          <a href="/oauth2/sign_in" class="btn btn-white btn-lg">
+            무료로 시작하기
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="url(#logo-grad2)"/>
+              <path d="M8 20V14L16 9L24 14V20L16 25L8 20Z" stroke="white" stroke-width="2" fill="none"/>
+              <path d="M16 15V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="16" cy="13" r="2" fill="white"/>
+              <defs>
+                <linearGradient id="logo-grad2" x1="0" y1="0" x2="32" y2="32">
+                  <stop stop-color="#6366F1"/>
+                  <stop offset="1" stop-color="#8B5CF6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">ChaChahome</span>
+          </a>
+          <p class="footer-tagline">스마트 홈을 더 스마트하게</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4 class="footer-heading">제품</h4>
+            <a href="#features" class="footer-link">기능</a>
+            <a href="#stats" class="footer-link">성과</a>
+            <a href="#testimonials" class="footer-link">후기</a>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">지원</h4>
+            <a href="#" class="footer-link">문서</a>
+            <a href="#" class="footer-link">FAQ</a>
+            <a href="#" class="footer-link">문의하기</a>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">법적 고지</h4>
+            <a href="#" class="footer-link">개인정보처리방침</a>
+            <a href="#" class="footer-link">이용약관</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ChaChahome. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
