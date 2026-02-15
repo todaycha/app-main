@@ -22,8 +22,8 @@ jobs:
         run: |
           # Use SOCKS5 proxy for SSH through Tailscale userspace networking
           ALL_PROXY=socks5h://localhost:1055 ssh -o StrictHostKeyChecking=no ubuntu@vnic-edge-svc-prod-01 bash <<'DEPLOY'
-            DEPLOY_DIR="/var/www/chachahome-web"
-            REPO_URL="https://github.com/todaycha/chachahome-web.git"
+            DEPLOY_DIR="/var/www/main"
+            REPO_URL="https://github.com/todaycha/app-main.git"
 
             if [ -d "$DEPLOY_DIR/.git" ]; then
               cd "$DEPLOY_DIR"
