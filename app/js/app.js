@@ -24,7 +24,7 @@
       return res.json();
     })
     .then(function (data) {
-      var email = data.email || '';
+      var email = (data.user && data.user.email) || '';
       if (email && userEmailEl) {
         userEmailEl.textContent = email;
       }
