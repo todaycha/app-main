@@ -348,3 +348,333 @@ a {
   font-size: 13px;
   color: var(--color-text-tertiary);
 }
+
+.btn-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.btn-icon-link:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-tertiary);
+  background: var(--color-border-light);
+}
+
+.btn-icon-link[hidden] {
+  display: none !important;
+}
+
+.app-card.is-hidden {
+  display: none;
+}
+
+.empty-state {
+  margin-top: 24px;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none !important;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.empty-state-desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.page-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-layout {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (min-width: 960px) {
+  .admin-layout {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+  }
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.panel-desc {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.form-label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 13px;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+.checklist {
+  display: grid;
+  gap: 10px;
+}
+
+.checklist.compact {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.checkbox-row input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.primary-btn {
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  box-shadow: var(--shadow-sm);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.secondary-btn {
+  color: var(--color-text);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.secondary-btn:hover {
+  border-color: var(--color-text-tertiary);
+  background: var(--color-border-light);
+}
+
+.danger-btn {
+  color: #b42318;
+  background: #fef3f2;
+  border-color: #fecdca;
+}
+
+.danger-btn:hover {
+  background: #fee4e2;
+}
+
+.flash-message {
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.flash-message[hidden] {
+  display: none !important;
+}
+
+.flash-message.success {
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.flash-message.error {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+.account-list {
+  display: grid;
+  gap: 16px;
+}
+
+.account-card {
+  padding: 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.account-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.account-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.account-meta {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.account-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.account-badge.admin {
+  color: #4338ca;
+  background: #e0e7ff;
+}
+
+.account-badge.user {
+  color: #0f766e;
+  background: #ccfbf1;
+}
+
+.account-section {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.account-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.inline-note {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  padding: 18px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.05), rgba(255, 255, 255, 0.9));
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-value {
+  margin-top: 8px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}

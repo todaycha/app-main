@@ -50,6 +50,12 @@
         </a>
         <div class="header-right">
           <span class="user-greeting" id="userEmail"></span>
+          <a class="btn-icon-link admin-link" id="adminLink" href="/app/admin/" aria-label="Admin console" title="Admin console" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33h.01A1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </a>
           <button class="btn-logout" id="logoutBtn" type="button">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
@@ -70,8 +76,8 @@
           <p class="welcome-desc">ChaChahome 서비스를 선택하세요.</p>
         </div>
 
-        <div class="apps-grid anim-entry" style="--delay: 1">
-          <a href="/app/thp/" class="app-card">
+        <div class="apps-grid anim-entry" id="appGrid" style="--delay: 1">
+          <a href="/app/thp/" class="app-card" data-app-slug="thp">
             <div class="app-card-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/>
@@ -87,7 +93,7 @@
               </svg>
             </div>
           </a>
-          <a href="/app/hwp/" class="app-card">
+          <a href="/app/hwp/" class="app-card" data-app-slug="hwp">
             <div class="app-card-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
@@ -107,7 +113,23 @@
               </svg>
             </div>
           </a>
-          <a href="/app/wifi-qr/" class="app-card">
+          <a href="/app/steam-chart/" class="app-card" data-app-slug="steam-chart">
+            <div class="app-card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="app-card-body">
+              <h2 class="app-card-title">Steam 차트</h2>
+              <p class="app-card-desc">Steam 탑 셀러 순위와 가격 변동을 추적합니다</p>
+            </div>
+            <div class="app-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          <a href="/app/wifi-qr/" class="app-card" data-app-slug="wifi-qr">
             <div class="app-card-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="7" height="7" rx="1"/>
@@ -129,6 +151,11 @@
               </svg>
             </div>
           </a>
+        </div>
+
+        <div class="empty-state anim-entry" id="emptyState" style="--delay: 2" hidden>
+          <h2 class="empty-state-title">No apps assigned</h2>
+          <p class="empty-state-desc">This account can sign in, but no app access has been assigned yet.</p>
         </div>
       </div>
     </main>

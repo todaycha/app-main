@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaChahome - Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+      <svg class="spinner-icon" width="40" height="40" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="url(#load-grad)"/>
+        <path d="M8 20V14L16 9L24 14V20L16 25L8 20Z" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M16 15V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="13" r="2" fill="white"/>
+        <defs>
+          <linearGradient id="load-grad" x1="0" y1="0" x2="32" y2="32">
+            <stop stop-color="#6366F1"/>
+            <stop offset="1" stop-color="#8B5CF6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="app-shell" id="appShell">
+    <header class="app-header">
+      <div class="container header-inner">
+        <a href="/app/" class="logo">
+          <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+            <path d="M8 20V14L16 9L24 14V20L16 25L8 20Z" stroke="white" stroke-width="2" fill="none"/>
+            <path d="M16 15V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="13" r="2" fill="white"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                <stop stop-color="#6366F1"/>
+                <stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo-text">ChaChahome</span>
+        </a>
+        <div class="header-right">
+          <span class="user-greeting" id="userEmail"></span>
+          <button class="btn-logout" id="logoutBtn" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            <span class="logout-label">Logout</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="container page-stack">
+        <section class="welcome-section anim-entry" style="--delay: 0">
+          <h1 class="welcome-title">Admin Console</h1>
+          <p class="welcome-desc">Manage loginable accounts and control which apps each account can reach.</p>
+        </section>
+
+        <div class="flash-message anim-entry" id="flashMessage" style="--delay: 1" hidden></div>
+
+        <section class="stat-grid anim-entry" style="--delay: 1">
+          <div class="stat-card">
+            <div class="stat-label">Active Users</div>
+            <div class="stat-value" id="statUsers">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Admins</div>
+            <div class="stat-value" id="statAdmins">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Full Access</div>
+            <div class="stat-value" id="statFullAccess">0</div>
+          </div>
+        </section>
+
+        <div class="admin-layout">
+          <section class="panel anim-entry" style="--delay: 2">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Add Account</h2>
+                <p class="panel-desc">Provision a Google account and choose which apps it can open.</p>
+              </div>
+            </div>
+
+            <form class="form-grid" id="addUserForm">
+              <label class="form-label">
+                Email
+                <input class="form-input" id="addUserEmail" type="email" autocomplete="email" placeholder="user@example.com" required>
+              </label>
+
+              <label class="checkbox-row">
+                <input id="addAccessAllApps" type="checkbox">
+                <span>Allow all apps</span>
+              </label>
+
+              <div>
+                <div class="form-label">Allowed apps</div>
+                <p class="form-help">Select one or more apps unless full access is enabled.</p>
+                <div class="checklist compact" id="addAppList"></div>
+              </div>
+
+              <button class="primary-btn" type="submit">Add account</button>
+            </form>
+          </section>
+
+          <section class="panel anim-entry" style="--delay: 3">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Accounts</h2>
+                <p class="panel-desc">Update app access or remove accounts from sign-in eligibility.</p>
+              </div>
+            </div>
+
+            <div class="account-list" id="userList"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container">
+        <p>&copy; 2026 ChaChahome</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
