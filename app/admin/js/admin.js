@@ -13,10 +13,6 @@
   var addAccessAllAppsEl = document.getElementById('addAccessAllApps');
   var addAppListEl = document.getElementById('addAppList');
   var userListEl = document.getElementById('userList');
-  var statUsersEl = document.getElementById('statUsers');
-  var statAdminsEl = document.getElementById('statAdmins');
-  var statFullAccessEl = document.getElementById('statFullAccess');
-
   var loginAttemptListEl = document.getElementById('loginAttemptList');
 
   var state = {
@@ -151,16 +147,6 @@
     syncChecklistDisabledState(addAppListEl, addAccessAllAppsEl && addAccessAllAppsEl.checked);
   }
 
-  function renderStats() {
-    var users = state.users || [];
-    var adminCount = users.filter(function (user) { return user.isAdmin; }).length;
-    var fullAccessCount = users.filter(function (user) { return user.accessAllApps; }).length;
-
-    if (statUsersEl) statUsersEl.textContent = String(users.length);
-    if (statAdminsEl) statAdminsEl.textContent = String(adminCount);
-    if (statFullAccessEl) statFullAccessEl.textContent = String(fullAccessCount);
-  }
-
   function renderChecklist(selectedApps, accessAllApps, disabled) {
     return state.apps.map(function (app) {
       var checked = selectedApps.indexOf(app.slug) !== -1;
@@ -278,7 +264,6 @@
       renderAddAppList();
       renderUsers();
       renderLoginAttempts();
-      renderStats();
       setFlash('', '');
     });
   }
