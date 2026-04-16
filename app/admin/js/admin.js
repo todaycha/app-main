@@ -14,11 +14,16 @@
   var addAppListEl = document.getElementById('addAppList');
   var userListEl = document.getElementById('userList');
   var loginAttemptListEl = document.getElementById('loginAttemptList');
+  var hwpStatGridEl = document.getElementById('hwpStatGrid');
+  var hwpActorListEl = document.getElementById('hwpActorList');
+  var hwpEventListEl = document.getElementById('hwpEventList');
 
   var state = {
     apps: [],
     users: [],
-    loginAttempts: []
+    loginAttempts: [],
+    hwpActivity: null,
+    hwpActivityError: ''
   };
 
   function show() {
@@ -237,6 +242,137 @@
     }).join('');
   }
 
+  function createEmptyHwpActivity() {
+    return {
+      summary: {
+        uploadCount: 0,
+        downloadCount: 0,
+        uniqueActors: 0,
+        lastEventAt: null
+      },
+      actorActivity: [],
+      recentEvents: []
+    };
+  }
+
+  function getHwpActivity() {
+    return requestJson('/auth/admin/hwp-activity').catch(function (error) {
+      if (error && (error.status === 401 || error.status === 403)) {
+        throw error;
+      }
+
+      state.hwpActivityError = error && error.message ? error.message : 'HWP 활동 정보를 불러오지 못했습니다.';
+      return { data: createEmptyHwpActivity() };
+    });
+  }
+
+  function formatEventLabel(eventName) {
+    if (eventName === 'upload') return '업로드';
+    if (eventName === 'download') return '다운로드';
+    return eventName || '이벤트';
+  }
+
+  function formatArtifactLabel(artifactKind) {
+    if (!artifactKind) return '파일';
+
+    if (artifactKind === 'source') return '원본 HWP';
+    if (artifactKind === 'translated-doc') return '번역 문서';
+    if (artifactKind === 'translated-txt') return '번역 텍스트';
+    if (artifactKind === 'compare-doc') return '비교 문서';
+    if (artifactKind === 'pipeline-log') return '파이프라인 로그';
+
+    return artifactKind;
+  }
+
+  function renderHwpStats(activity) {
+    if (!hwpStatGridEl) return;
+
+    var summary = activity.summary || createEmptyHwpActivity().summary;
+    var cards = [
+      { label: '업로드', value: String(summary.uploadCount || 0) },
+      { label: '다운로드', value: String(summary.downloadCount || 0) },
+      { label: '활동 사용자', value: String(summary.uniqueActors || 0) },
+      { label: '마지막 활동', value: formatDate(summary.lastEventAt), small: true }
+    ];
+
+    hwpStatGridEl.innerHTML = cards.map(function (card) {
+      return '' +
+        '<article class="stat-card">' +
+          '<p class="stat-label">' + escapeHtml(card.label) + '</p>' +
+          '<p class="stat-value' + (card.small ? ' small' : '') + '">' + escapeHtml(card.value) + '</p>' +
+        '</article>';
+    }).join('');
+  }
+
+  function renderHwpActors(activity) {
+    if (!hwpActorListEl) return;
+
+    var actorActivity = Array.isArray(activity.actorActivity) ? activity.actorActivity : [];
+    if (!actorActivity.length) {
+      hwpActorListEl.innerHTML = '' +
+        '<div class="empty-state compact-empty">' +
+          '<h3 class="empty-state-title">기록 없음</h3>' +
+          '<p class="empty-state-desc">아직 HWP 업로드 또는 다운로드 이력이 없습니다.</p>' +
+        '</div>';
+      return;
+    }
+
+    hwpActorListEl.innerHTML = actorActivity.map(function (entry) {
+      return '' +
+        '<article class="activity-row-card">' +
+          '<div class="activity-main">' +
+            '<p class="activity-title">' + escapeHtml(entry.actorEmail || '(이메일 없음)') + '</p>' +
+            '<p class="activity-meta">최근 활동: ' + escapeHtml(formatDate(entry.lastEventAt)) + '</p>' +
+          '</div>' +
+          '<div class="activity-badges">' +
+            '<span class="metric-pill">업로드 ' + escapeHtml(String(entry.uploadCount || 0)) + '</span>' +
+            '<span class="metric-pill download">다운로드 ' + escapeHtml(String(entry.downloadCount || 0)) + '</span>' +
+          '</div>' +
+        '</article>';
+    }).join('');
+  }
+
+  function renderHwpEvents(activity) {
+    if (!hwpEventListEl) return;
+
+    var recentEvents = Array.isArray(activity.recentEvents) ? activity.recentEvents : [];
+    if (!recentEvents.length) {
+      hwpEventListEl.innerHTML = '' +
+        '<div class="empty-state compact-empty">' +
+          '<h3 class="empty-state-title">기록 없음</h3>' +
+          '<p class="empty-state-desc">표시할 최근 이벤트가 없습니다.</p>' +
+        '</div>';
+      return;
+    }
+
+    hwpEventListEl.innerHTML = recentEvents.map(function (entry) {
+      var actorEmail = entry.actorEmail || entry.uploaderEmail || '(이메일 없음)';
+      return '' +
+        '<article class="activity-row-card">' +
+          '<div class="activity-main">' +
+            '<div class="activity-head">' +
+              '<p class="activity-title">' + escapeHtml(entry.originalFilename) + '</p>' +
+              '<span class="event-pill ' + escapeHtml(entry.eventName || '') + '">' + escapeHtml(formatEventLabel(entry.eventName)) + '</span>' +
+            '</div>' +
+            '<p class="activity-meta">' + escapeHtml(actorEmail) + ' · ' + escapeHtml(formatArtifactLabel(entry.artifactKind)) + '</p>' +
+            '<p class="activity-meta">' + escapeHtml(formatDate(entry.createdAt)) + '</p>' +
+          '</div>' +
+        '</article>';
+    }).join('');
+  }
+
+  function renderHwpActivity() {
+    var activity = state.hwpActivity || createEmptyHwpActivity();
+
+    renderHwpStats(activity);
+    renderHwpActors(activity);
+    renderHwpEvents(activity);
+
+    if (state.hwpActivityError) {
+      setFlash('error', state.hwpActivityError);
+    }
+  }
+
   function syncChecklistDisabledState(scope, disabled) {
     var checkboxes = scope.querySelectorAll('input[data-role="app-toggle"], input[data-app-slug]');
     Array.prototype.forEach.call(checkboxes, function (checkbox) {
@@ -253,18 +389,25 @@
   }
 
   function refreshData() {
+    state.hwpActivityError = '';
+
     return Promise.all([
       requestJson('/auth/admin/apps'),
       requestJson('/auth/admin/users'),
-      requestJson('/auth/admin/login-attempts')
+      requestJson('/auth/admin/login-attempts'),
+      getHwpActivity()
     ]).then(function (results) {
       state.apps = results[0].data || [];
       state.users = results[1].data || [];
       state.loginAttempts = results[2].data || [];
+      state.hwpActivity = results[3].data || createEmptyHwpActivity();
       renderAddAppList();
       renderUsers();
       renderLoginAttempts();
-      setFlash('', '');
+      renderHwpActivity();
+      if (!state.hwpActivityError) {
+        setFlash('', '');
+      }
     });
   }
 
