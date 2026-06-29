@@ -58,14 +58,6 @@
           <span class="logo-text">ChaChahome</span>
         </a>
 
-        <div class="header-search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>
-          </svg>
-          <input id="appFilter" type="search" placeholder="앱 검색" aria-label="앱 검색" autocomplete="off">
-          <kbd aria-hidden="true">/</kbd>
-        </div>
-
         <div class="header-right">
           <span class="user-greeting" id="userEmail"></span>
           <button class="btn-icon-link theme-toggle" id="themeToggle" type="button" aria-label="테마 전환" title="테마 전환">
@@ -96,18 +88,8 @@
     <!-- Page body -->
     <main class="app-main">
       <div class="container">
-        <div class="welcome-section anim-entry" style="--delay: 0">
-          <h1 class="welcome-title">내 앱<span class="welcome-count" id="appCount" aria-hidden="true"></span></h1>
-          <p class="welcome-desc">열고 싶은 서비스를 고르세요.</p>
-        </div>
-
         <!-- Category bands are rendered here from /auth/apps -->
-        <div class="app-bands anim-entry" id="appBands" style="--delay: 1"></div>
-
-        <div class="empty-state" id="noResults" hidden>
-          <h2 class="empty-state-title">검색 결과 없음</h2>
-          <p class="empty-state-desc">‘<span id="noResultsQuery"></span>’에 맞는 앱이 없어요.</p>
-        </div>
+        <div class="app-bands anim-entry" id="appBands" style="--delay: 0"></div>
 
         <div class="empty-state" id="emptyState" hidden>
           <h2 class="empty-state-title">사용할 수 있는 앱이 없어요</h2>

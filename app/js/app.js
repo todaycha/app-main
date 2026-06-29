@@ -9,12 +9,8 @@
   var adminLinkEl = document.getElementById('adminLink');
   var logoutBtn = document.getElementById('logoutBtn');
   var themeToggle = document.getElementById('themeToggle');
-  var filterInput = document.getElementById('appFilter');
   var bandsEl = document.getElementById('appBands');
-  var countEl = document.getElementById('appCount');
   var emptyStateEl = document.getElementById('emptyState');
-  var noResultsEl = document.getElementById('noResults');
-  var noResultsQueryEl = document.getElementById('noResultsQuery');
 
   // --- Presentation registries (the backend owns access + content) ---
   var CATEGORIES = {
@@ -64,12 +60,10 @@
     bandsEl.innerHTML = '';
 
     if (!apps.length) {
-      countEl.textContent = '';
       emptyStateEl.hidden = false;
       return;
     }
     emptyStateEl.hidden = true;
-    countEl.textContent = String(apps.length);
 
     // Group by category, then order the bands.
     var groups = {};
@@ -85,11 +79,9 @@
     var html = orderedCats.map(function (cat) {
       var meta = CATEGORIES[cat];
       var cards = groups[cat].map(function (app) {
-        var search = (app.displayName + ' ' + app.slug).toLowerCase();
         return '' +
           '<a class="app-card" href="' + escapeHtml(app.path) + '" ' +
-          'data-app-slug="' + escapeHtml(app.slug) + '" data-cat="' + escapeHtml(cat) + '" ' +
-          'data-search="' + escapeHtml(search) + '">' +
+          'data-app-slug="' + escapeHtml(app.slug) + '" data-cat="' + escapeHtml(cat) + '">' +
             '<div class="app-card-top">' +
               '<span class="app-card-icon">' + iconSvg(app.icon) + '</span>' +
               '<span class="app-card-arrow">' + ARROW + '</span>' +
@@ -112,31 +104,6 @@
     }).join('');
 
     bandsEl.innerHTML = html;
-  }
-
-  // --- Filter ---
-  function applyFilter() {
-    var query = filterInput.value.trim().toLowerCase();
-    var cards = bandsEl.querySelectorAll('.app-card');
-    var totalApps = cards.length;
-    var shownCount = 0;
-
-    cards.forEach(function (card) {
-      var hit = !query || card.getAttribute('data-search').indexOf(query) !== -1;
-      card.classList.toggle('is-hidden', !hit);
-      if (hit) shownCount += 1;
-    });
-
-    bandsEl.querySelectorAll('.cat').forEach(function (section) {
-      var visible = section.querySelectorAll('.app-card:not(.is-hidden)').length;
-      section.hidden = visible === 0;
-    });
-
-    if (totalApps > 0) {
-      var noHits = shownCount === 0;
-      noResultsEl.hidden = !noHits;
-      if (noHits) noResultsQueryEl.textContent = filterInput.value.trim();
-    }
   }
 
   // --- Theme ---
@@ -197,21 +164,6 @@
     .catch(function () {
       redirectToLogin();
     });
-
-  if (filterInput) {
-    filterInput.addEventListener('input', applyFilter);
-  }
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === '/' && document.activeElement !== filterInput) {
-      event.preventDefault();
-      filterInput.focus();
-    } else if (event.key === 'Escape' && document.activeElement === filterInput) {
-      filterInput.value = '';
-      applyFilter();
-      filterInput.blur();
-    }
-  });
 
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
