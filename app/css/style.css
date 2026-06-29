@@ -395,11 +395,10 @@ a {
 }
 
 .cat-name {
-  font-family: var(--font-mono);
+  font-family: var(--font-family);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--color-text-secondary);
 }
 
