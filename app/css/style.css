@@ -46,16 +46,16 @@
 
 /* --- Dark theme (opt-in via data-theme; admin page stays light) --- */
 :root[data-theme="dark"] {
-  --color-bg: #0B0E14;
-  --color-surface: #151A23;
-  --color-surface-2: #1C222D;
-  --color-text: #E7EAF0;
-  --color-text-secondary: #9BA3B0;
-  --color-text-tertiary: #6B7280;
-  --color-border: #232A36;
-  --color-border-light: #20262F;
-  --color-border-strong: #323A48;
-  --header-bg: rgba(11, 14, 20, 0.72);
+  --color-bg: #0F172A;
+  --color-surface: #1E293B;
+  --color-surface-2: #273449;
+  --color-text: #F1F5F9;
+  --color-text-secondary: #CBD5E1;
+  --color-text-tertiary: #94A3B8;
+  --color-border: #334155;
+  --color-border-light: #273449;
+  --color-border-strong: #3E4A63;
+  --header-bg: rgba(15, 23, 42, 0.72);
   --accent-monitor: #2DD4BF;
   --accent-docs: #FBBF24;
   --accent-read: #FB7185;
@@ -68,16 +68,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme="auto"] {
-    --color-bg: #0B0E14;
-    --color-surface: #151A23;
-    --color-surface-2: #1C222D;
-    --color-text: #E7EAF0;
-    --color-text-secondary: #9BA3B0;
-    --color-text-tertiary: #6B7280;
-    --color-border: #232A36;
-    --color-border-light: #20262F;
-    --color-border-strong: #323A48;
-    --header-bg: rgba(11, 14, 20, 0.72);
+    --color-bg: #0F172A;
+    --color-surface: #1E293B;
+    --color-surface-2: #273449;
+    --color-text: #F1F5F9;
+    --color-text-secondary: #CBD5E1;
+    --color-text-tertiary: #94A3B8;
+    --color-border: #334155;
+    --color-border-light: #273449;
+    --color-border-strong: #3E4A63;
+    --header-bg: rgba(15, 23, 42, 0.72);
     --accent-monitor: #2DD4BF;
     --accent-docs: #FBBF24;
     --accent-read: #FB7185;
@@ -87,6 +87,33 @@
     --shadow-lg: 0 10px 30px -10px rgba(0,0,0,0.6);
     --shadow-xl: 0 20px 40px -12px rgba(0,0,0,0.65);
   }
+}
+
+/* --- Dark overrides for admin components (light pastel chips → slate-safe) --- */
+:root[data-theme="dark"] .danger-btn { color: #FCA5A5; background: rgba(248, 113, 113, 0.12); border-color: rgba(248, 113, 113, 0.4); }
+:root[data-theme="dark"] .danger-btn:hover { background: rgba(248, 113, 113, 0.2); }
+:root[data-theme="dark"] .flash-message.success { color: #86EFAC; background: rgba(52, 211, 153, 0.13); border-color: rgba(52, 211, 153, 0.35); }
+:root[data-theme="dark"] .flash-message.error { color: #FCA5A5; background: rgba(248, 113, 113, 0.13); border-color: rgba(248, 113, 113, 0.35); }
+:root[data-theme="dark"] .account-badge.admin { color: #A5B4FC; background: rgba(129, 140, 248, 0.18); }
+:root[data-theme="dark"] .account-badge.user { color: #5EEAD4; background: rgba(45, 212, 191, 0.16); }
+:root[data-theme="dark"] .stat-card { background: linear-gradient(180deg, rgba(129, 140, 248, 0.1), rgba(30, 41, 59, 0.35)); }
+:root[data-theme="dark"] .metric-pill { color: #A5B4FC; background: rgba(129, 140, 248, 0.18); }
+:root[data-theme="dark"] .metric-pill.download { color: #67E8F9; background: rgba(34, 211, 238, 0.14); }
+:root[data-theme="dark"] .event-pill { color: #A5B4FC; background: rgba(129, 140, 248, 0.13); }
+:root[data-theme="dark"] .event-pill.download { color: #67E8F9; background: rgba(34, 211, 238, 0.1); }
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] .danger-btn { color: #FCA5A5; background: rgba(248, 113, 113, 0.12); border-color: rgba(248, 113, 113, 0.4); }
+  :root[data-theme="auto"] .danger-btn:hover { background: rgba(248, 113, 113, 0.2); }
+  :root[data-theme="auto"] .flash-message.success { color: #86EFAC; background: rgba(52, 211, 153, 0.13); border-color: rgba(52, 211, 153, 0.35); }
+  :root[data-theme="auto"] .flash-message.error { color: #FCA5A5; background: rgba(248, 113, 113, 0.13); border-color: rgba(248, 113, 113, 0.35); }
+  :root[data-theme="auto"] .account-badge.admin { color: #A5B4FC; background: rgba(129, 140, 248, 0.18); }
+  :root[data-theme="auto"] .account-badge.user { color: #5EEAD4; background: rgba(45, 212, 191, 0.16); }
+  :root[data-theme="auto"] .stat-card { background: linear-gradient(180deg, rgba(129, 140, 248, 0.1), rgba(30, 41, 59, 0.35)); }
+  :root[data-theme="auto"] .metric-pill { color: #A5B4FC; background: rgba(129, 140, 248, 0.18); }
+  :root[data-theme="auto"] .metric-pill.download { color: #67E8F9; background: rgba(34, 211, 238, 0.14); }
+  :root[data-theme="auto"] .event-pill { color: #A5B4FC; background: rgba(129, 140, 248, 0.13); }
+  :root[data-theme="auto"] .event-pill.download { color: #67E8F9; background: rgba(34, 211, 238, 0.1); }
 }
 
 html {

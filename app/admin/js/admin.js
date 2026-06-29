@@ -530,6 +530,19 @@
     });
   }
 
+  // --- Theme toggle (shared portal theme via same-origin localStorage 'theme') ---
+  var themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    var themeMq = window.matchMedia('(prefers-color-scheme: dark)');
+    themeToggle.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var showingDark = cur === 'dark' || (cur !== 'light' && themeMq.matches);
+      var next = showingDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  }
+
   loadSession()
     .then(function () {
       return refreshData();
